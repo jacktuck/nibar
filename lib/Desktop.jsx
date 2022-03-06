@@ -37,7 +37,7 @@ const render = ({ output }) => {
   const spaces = [];
 
   output.forEach(function(space) {
-    spaces.push(renderSpace(space.index, space.focused, space.visible, space.windows));
+    spaces.push(renderSpace(space.index, space["has-focus"], space.visible, space.windows));
   });
 
   return (
