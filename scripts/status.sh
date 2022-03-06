@@ -22,8 +22,17 @@ WIFI_SSID=$(networksetup -getairportnetwork en0 | cut -c 24-)
 
 DND=$(defaults -currentHost read com.apple.notificationcenterui doNotDisturb)
 
+MEM_USED=$(top -l1 | awk '/PhysMem/ {print substr($2, 1, length($2)-1)}')
+MEM_FREE=$(top -l1 | awk '/PhysMem/ {print substr($6, 1, length($6)-1)}')
+MEM_TOTAL=$(echo | awk -v MEM_USED=$MEM_USED -v MEM_FREE=$MEM_FREE '{ print MEM_USED + MEM_FREE }')
+MEM_USED_PERCENT=$(echo | awk -v MEM_USED=$MEM_USED -v MEM_TOTAL=$MEM_TOTAL '{ print (MEM_USED / MEM_TOTAL) * 100}')
+
+
 echo $(cat <<-EOF
 {
+    "memory": {
+        "used": "$MEM_USED_PERCENT"
+    },
     "datetime": {
         "time": "$TIME",
         "date": "$DATE"
