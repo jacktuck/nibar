@@ -6,7 +6,7 @@ const style = {
   userSelect: "none",
   zIndex: "-1",
   width: "100%",
-  height: "20px",
+  height: styles.lineHeight,
   position: "fixed",
   overflow: "hidden",
   top: "0px",
