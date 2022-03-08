@@ -7,6 +7,6 @@ export default {
     accent: "#5fafaf"
   },
   fontSize: "14px",
-  lineHeight: "25px",
+  lineHeight: "24px",
   fontFamily: "'SF Mono', monospace"
 }
